@@ -20,14 +20,15 @@ Note _$NoteFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Note {
-  String get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  String? get sourceId => throw _privateConstructorUsedError;
+  int? get sourceId => throw _privateConstructorUsedError;
   String? get page => throw _privateConstructorUsedError;
-  String? get folderId => throw _privateConstructorUsedError;
+  int? get folderId => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Note to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,14 +45,15 @@ abstract class $NoteCopyWith<$Res> {
       _$NoteCopyWithImpl<$Res, Note>;
   @useResult
   $Res call(
-      {String id,
-      String title,
+      {int id,
+      String? title,
       String content,
-      String? sourceId,
+      int? sourceId,
       String? page,
-      String? folderId,
+      int? folderId,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -70,23 +72,24 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
+    Object? title = freezed,
     Object? content = null,
     Object? sourceId = freezed,
     Object? page = freezed,
     Object? folderId = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
+              as int,
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -94,7 +97,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
       sourceId: freezed == sourceId
           ? _value.sourceId
           : sourceId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       page: freezed == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -102,7 +105,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
       folderId: freezed == folderId
           ? _value.folderId
           : folderId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -111,6 +114,10 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -123,14 +130,15 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      String title,
+      {int id,
+      String? title,
       String content,
-      String? sourceId,
+      int? sourceId,
       String? page,
-      String? folderId,
+      int? folderId,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -146,23 +154,24 @@ class __$$NoteImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
+    Object? title = freezed,
     Object? content = null,
     Object? sourceId = freezed,
     Object? page = freezed,
     Object? folderId = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_$NoteImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
+              as int,
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -170,7 +179,7 @@ class __$$NoteImplCopyWithImpl<$Res>
       sourceId: freezed == sourceId
           ? _value.sourceId
           : sourceId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       page: freezed == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -178,7 +187,7 @@ class __$$NoteImplCopyWithImpl<$Res>
       folderId: freezed == folderId
           ? _value.folderId
           : folderId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -187,6 +196,10 @@ class __$$NoteImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -196,37 +209,40 @@ class __$$NoteImplCopyWithImpl<$Res>
 class _$NoteImpl implements _Note {
   const _$NoteImpl(
       {required this.id,
-      required this.title,
+      this.title,
       required this.content,
       this.sourceId,
       this.page,
       this.folderId,
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt,
+      this.deletedAt});
 
   factory _$NoteImpl.fromJson(Map<String, dynamic> json) =>
       _$$NoteImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
-  final String title;
+  final String? title;
   @override
   final String content;
   @override
-  final String? sourceId;
+  final int? sourceId;
   @override
   final String? page;
   @override
-  final String? folderId;
+  final int? folderId;
   @override
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  final DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'Note(id: $id, title: $title, content: $content, sourceId: $sourceId, page: $page, folderId: $folderId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Note(id: $id, title: $title, content: $content, sourceId: $sourceId, page: $page, folderId: $folderId, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -245,13 +261,15 @@ class _$NoteImpl implements _Note {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.deletedAt, deletedAt) ||
+                other.deletedAt == deletedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content, sourceId,
-      page, folderId, createdAt, updatedAt);
+      page, folderId, createdAt, updatedAt, deletedAt);
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.
@@ -271,33 +289,36 @@ class _$NoteImpl implements _Note {
 
 abstract class _Note implements Note {
   const factory _Note(
-      {required final String id,
-      required final String title,
+      {required final int id,
+      final String? title,
       required final String content,
-      final String? sourceId,
+      final int? sourceId,
       final String? page,
-      final String? folderId,
+      final int? folderId,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$NoteImpl;
+      required final DateTime updatedAt,
+      final DateTime? deletedAt}) = _$NoteImpl;
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$NoteImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
-  String get title;
+  String? get title;
   @override
   String get content;
   @override
-  String? get sourceId;
+  int? get sourceId;
   @override
   String? get page;
   @override
-  String? get folderId;
+  int? get folderId;
   @override
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override
+  DateTime? get deletedAt;
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.

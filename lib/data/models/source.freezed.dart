@@ -20,12 +20,13 @@ Source _$SourceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Source {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Source to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,12 +43,13 @@ abstract class $SourceCopyWith<$Res> {
       _$SourceCopyWithImpl<$Res, Source>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String title,
       String? url,
       String? description,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -71,12 +73,13 @@ class _$SourceCopyWithImpl<$Res, $Val extends Source>
     Object? description = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -97,6 +100,10 @@ class _$SourceCopyWithImpl<$Res, $Val extends Source>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -109,12 +116,13 @@ abstract class _$$SourceImplCopyWith<$Res> implements $SourceCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String title,
       String? url,
       String? description,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -136,12 +144,13 @@ class __$$SourceImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_$SourceImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -162,6 +171,10 @@ class __$$SourceImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -175,13 +188,14 @@ class _$SourceImpl implements _Source {
       this.url,
       this.description,
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt,
+      this.deletedAt});
 
   factory _$SourceImpl.fromJson(Map<String, dynamic> json) =>
       _$$SourceImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String title;
   @override
@@ -192,10 +206,12 @@ class _$SourceImpl implements _Source {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  final DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'Source(id: $id, title: $title, url: $url, description: $description, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Source(id: $id, title: $title, url: $url, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -211,13 +227,15 @@ class _$SourceImpl implements _Source {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.deletedAt, deletedAt) ||
+                other.deletedAt == deletedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, url, description, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, title, url, description,
+      createdAt, updatedAt, deletedAt);
 
   /// Create a copy of Source
   /// with the given fields replaced by the non-null parameter values.
@@ -237,17 +255,18 @@ class _$SourceImpl implements _Source {
 
 abstract class _Source implements Source {
   const factory _Source(
-      {required final String id,
+      {required final int id,
       required final String title,
       final String? url,
       final String? description,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$SourceImpl;
+      required final DateTime updatedAt,
+      final DateTime? deletedAt}) = _$SourceImpl;
 
   factory _Source.fromJson(Map<String, dynamic> json) = _$SourceImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get title;
   @override
@@ -258,6 +277,8 @@ abstract class _Source implements Source {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override
+  DateTime? get deletedAt;
 
   /// Create a copy of Source
   /// with the given fields replaced by the non-null parameter values.

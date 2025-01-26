@@ -20,12 +20,13 @@ Folder _$FolderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Folder {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get parentId => throw _privateConstructorUsedError;
+  int? get parentId => throw _privateConstructorUsedError;
   String? get color => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Folder to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,12 +43,13 @@ abstract class $FolderCopyWith<$Res> {
       _$FolderCopyWithImpl<$Res, Folder>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String name,
-      String? parentId,
+      int? parentId,
       String? color,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -71,12 +73,13 @@ class _$FolderCopyWithImpl<$Res, $Val extends Folder>
     Object? color = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -84,7 +87,7 @@ class _$FolderCopyWithImpl<$Res, $Val extends Folder>
       parentId: freezed == parentId
           ? _value.parentId
           : parentId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -97,6 +100,10 @@ class _$FolderCopyWithImpl<$Res, $Val extends Folder>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -109,12 +116,13 @@ abstract class _$$FolderImplCopyWith<$Res> implements $FolderCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String name,
-      String? parentId,
+      int? parentId,
       String? color,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -136,12 +144,13 @@ class __$$FolderImplCopyWithImpl<$Res>
     Object? color = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_$FolderImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -149,7 +158,7 @@ class __$$FolderImplCopyWithImpl<$Res>
       parentId: freezed == parentId
           ? _value.parentId
           : parentId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -162,6 +171,10 @@ class __$$FolderImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -175,27 +188,30 @@ class _$FolderImpl implements _Folder {
       this.parentId,
       this.color,
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt,
+      this.deletedAt});
 
   factory _$FolderImpl.fromJson(Map<String, dynamic> json) =>
       _$$FolderImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String name;
   @override
-  final String? parentId;
+  final int? parentId;
   @override
   final String? color;
   @override
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  final DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'Folder(id: $id, name: $name, parentId: $parentId, color: $color, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Folder(id: $id, name: $name, parentId: $parentId, color: $color, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -211,13 +227,15 @@ class _$FolderImpl implements _Folder {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.deletedAt, deletedAt) ||
+                other.deletedAt == deletedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, parentId, color, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, parentId, color, createdAt, updatedAt, deletedAt);
 
   /// Create a copy of Folder
   /// with the given fields replaced by the non-null parameter values.
@@ -237,27 +255,30 @@ class _$FolderImpl implements _Folder {
 
 abstract class _Folder implements Folder {
   const factory _Folder(
-      {required final String id,
+      {required final int id,
       required final String name,
-      final String? parentId,
+      final int? parentId,
       final String? color,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$FolderImpl;
+      required final DateTime updatedAt,
+      final DateTime? deletedAt}) = _$FolderImpl;
 
   factory _Folder.fromJson(Map<String, dynamic> json) = _$FolderImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get name;
   @override
-  String? get parentId;
+  int? get parentId;
   @override
   String? get color;
   @override
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override
+  DateTime? get deletedAt;
 
   /// Create a copy of Folder
   /// with the given fields replaced by the non-null parameter values.

@@ -7,12 +7,15 @@ part of 'folder.dart';
 // **************************************************************************
 
 _$FolderImpl _$$FolderImplFromJson(Map<String, dynamic> json) => _$FolderImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      parentId: json['parentId'] as String?,
+      parentId: (json['parentId'] as num?)?.toInt(),
       color: json['color'] as String?,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
+      deletedAt: json['deletedAt'] == null
+          ? null
+          : DateTime.parse(json['deletedAt'] as String),
     );
 
 Map<String, dynamic> _$$FolderImplToJson(_$FolderImpl instance) =>
@@ -23,4 +26,5 @@ Map<String, dynamic> _$$FolderImplToJson(_$FolderImpl instance) =>
       'color': instance.color,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
+      'deletedAt': instance.deletedAt?.toIso8601String(),
     };
