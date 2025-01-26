@@ -40,9 +40,10 @@ class NoteRepository {
 
   Future<int> update(Note note) async {
     final db = await _dbHelper.database;
+    final updateNote = note.copyWith(updatedAt: DateTime.now());
     return await db.update(
       'notes',
-      Note.toDB(note),
+      Note.toDB(updateNote),
       where: 'id = ?',
       whereArgs: [note.id],
     );
@@ -61,12 +62,12 @@ class NoteRepository {
     );
   }
 
-  Future<List<Note>> getByFolderId(int folderId) async {
+  Future<List<Note>> getByFolderId(int? folderId) async {
     final db = await _dbHelper.database;
     final List<Map<String, dynamic>> maps = await db.query(
       'notes',
-      where: 'folder_id = ?',
-      whereArgs: [folderId],
+      where: folderId == null ? 'folder_id IS NULL' : 'folder_id = ?',
+      whereArgs: folderId == null ? null : [folderId],
     );
     return List.generate(maps.length, (i) => Note.fromDB(maps[i]));
   }

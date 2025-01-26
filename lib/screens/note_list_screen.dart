@@ -129,14 +129,18 @@ class NoteListScreen extends HookConsumerWidget {
               if (!isSearching.value) {
                 searchController.clear();
                 selectedSource.value = null;
-                ref.read(noteListProvider.notifier).refresh();
+                ref
+                    .read(noteListProvider.notifier)
+                    .refresh(null); // Pass null here
               }
             },
           ),
           if (!isSearching.value)
             IconButton(
               icon: const Icon(Icons.refresh),
-              onPressed: () => ref.read(noteListProvider.notifier).refresh(),
+              onPressed: () => ref
+                  .read(noteListProvider.notifier)
+                  .refresh(null), // Pass null here
             ),
         ],
       ),

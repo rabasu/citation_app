@@ -36,11 +36,22 @@ class FolderRepository {
     return Folder.fromDB(maps.first);
   }
 
+  Future<List<Folder>> getByParentId(int? parentId) async {
+    final db = await _dbHelper.database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      'folders',
+      where: 'parent_id = ? AND deleted_at IS NULL',
+      whereArgs: [parentId],
+    );
+    return List.generate(maps.length, (i) => Folder.fromDB(maps[i]));
+  }
+
   Future<int> update(Folder folder) async {
     final db = await _dbHelper.database;
+    final updateFolder = folder.copyWith(updatedAt: DateTime.now());
     return await db.update(
       'folders',
-      Folder.toDB(folder),
+      Folder.toDB(updateFolder),
       where: 'id = ?',
       whereArgs: [folder.id],
     );

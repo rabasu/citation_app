@@ -38,9 +38,10 @@ class SourceRepository {
 
   Future<int> update(Source source) async {
     final db = await _dbHelper.database;
+    final updateSource = source.copyWith(updatedAt: DateTime.now());
     return await db.update(
       'sources',
-      Source.toDB(source),
+      Source.toDB(updateSource),
       where: 'id = ?',
       whereArgs: [source.id],
     );
